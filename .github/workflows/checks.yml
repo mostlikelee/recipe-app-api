@@ -15,6 +15,8 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Setup Docker
+        uses: docker/setup-buildx-action@v2
       - name: Test
         run: docker-composer run --rm app sh -c "python manage.py test"
       - name: Lint
